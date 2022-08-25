@@ -1,0 +1,39 @@
+﻿Start off right in classwork.
+- Create a folder on Desktop or My Documents, for example, call it "classwork".
+- Choose a text editor, NotePad++ for Windows or VIM for Mac.
+- Decied on a command-line interpreter, Git Bash that 
+comes with Git for Windows or Terminal for Mac.
+- Git a Unix basic commands cheat sheet.
+- Set Git Bash to open in your working folder, "classwork".
+- For Windows, you need to update the variable "path" in your 
+"system environment variable" to locate the needed application programs.
+Control Panel > Systems and Security > System > Advanced System Settings > Advanced > Environment Variable
+- "make" program is a building tool which runs on Unix and Linux.
+- MinGW is a compiler system based on GNU (free UNIX-style OD) GCC that
+compiles and links code to be run on Windows.
+
+Edit System Environment Variable.
+Say you have a executable called "file.exe", and it is located in "C:\Documents\". So the path to the executable is "C:\Documents\file.exe".
+
+Now if you want to run this executable from command line, you can either:
+
+Go to that directory (`cd C:\Documents`), and run `.\file.exe`. Here, ".\" tells the command line interpreter that you want to run 
+the file in "current directory". Or, Specify the full path to the executable --- Run `C:\Documents\file.exe` from any directory. Or,
+Add "C:\Documents" to "PATH" environment variable. This tells the command line interpreter where to find a file 
+if the command does not specify a path. With "C:\Documents" in "PATH", you can simply run "file.exe" from anywhere.
+
+For SSH and FTP using Windows.
+WinSCP
+UTHOSTNAMENAME.cs.utexas.edu
+
+PuTTy
+- When you first open session in PuTTy, it asks for your UTCS password. Just type your pw in and hit enter, 
+and you should be able to log in. The cursor does not move when you type in pw.
+
+
+
+- make is whitespace sensitive
+Target: dependencies
+	Actions to generate Target
+
+if one of the dependecies changes, make will automatically re-run "Target". 

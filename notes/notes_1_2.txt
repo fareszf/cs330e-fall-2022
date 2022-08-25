@@ -1,0 +1,34 @@
+- Collatz Conjecture
+
+take a positive int
+if even, divide by 2
+if odd, multiply by 3 and add 1
+repeat until 1
+
+5, 16, 8, 4, 2, 1
+cycle length of 5 is 6
+cycle length of 10 is 7
+
+- Assertions
+assertions are good computational comments and they're invaluable to a future maintainer of the code
+
+an assertion failure reports 
+•	the filename, 
+•	the function name, 
+•	the line number, and 
+•	the expression where the failure occurred
+
+executing Python with -O turns off all assertions
+
+assertions are not appropriate for testing code
+unit test frameworks like Python's unittest are
+
+assert is NOT good for testing
+assert is NOT good for user error
+
+they are appropriate for programmer errors
+exceptions will be the correct tool for user errors
+
+When an assert fails, it stops the program. When I am testing a program. 
+I do not want the program to stop. I need to complete all tests. 
+That's why we use unit testing. 

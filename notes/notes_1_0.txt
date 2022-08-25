@@ -1,0 +1,40 @@
+
+•	Comments in Python:
+ 	#   : for one line 
+	''' : for a multiline comment
+
+• if __name__ == "__main__" :
+     main()
+
+main() is executed only if the file, which contain "main()", is run directly, and not imported.
+
+Note: __name__ is an attribute that is automatically set and has the value "__main__" only 
+if the file is executed as a script (not if it is imported as a module).
+
+•	Script vs module:
+	Script: directly executable piece of code (run by itself).
+	Module: a library, imported by other piece of code.
+
+•	cProfile: 
+an optimization tool that is used to diagnose what makes a program slow.
+The output of applying this tool to a python script includes information such as total running time,
+ time of each separate function, and how many times each function is executed.
+
+•	-m flag
+ allow us to run a modules such as cProfile as a script.
+
+•	range(): returns an object which produces elements on demand. 
+
+•	Three ways to execute a Hello.py
+	type in the shell: "python Hello.py"
+	give executable permission to the file and type in the shell: "Hello.py"
+	run the python interpreter and type in: "import Hello"
+
+•	#! /usr/bin/env python3
+	It's a commented line for Python 
+	Informs the OS that this file should be run by python.
+
+In a Unix-like operating system, the program loader takes the presence of these two characters 
+as an indication that the file is a script, and tries to execute that script using the interpreter 
+specified by the rest of the first line in the file.
+
