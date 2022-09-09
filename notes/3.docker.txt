@@ -1,0 +1,159 @@
+What is Docker?
+Docker is a platform designed for developing, shipping, and running applications. 
+It provides the ability to package and run an application in an isolated 
+environment called a container.
+
+It allows users to separate their applications from their infrastructure 
+and shortens the time between writing code and running it in production.
+
+Briefly, docker is a way to package software so it can run on any hardware.
+
+- Docker allows to reproduce environment
+- Software developers can define the environment within a Dockerfile.
+- Any developer can use dockerfile to rebiuld environment (saved as an image)
+
+------
+
+Usecase for Docker: 
+Dockerfile				image                         container
+a blueprint for building      a template for running        running process 
+a docker image                docker containers        
+
+Dockerfile --docker build--> image --docker run-> container -->push to Docker Hub
+
+------
+
+There are four main internal components of Docker: 
+1. Engine (Docker Client and Server)
+A client-Server application that supports the tasks and 
+workflows involved in building, shipping, and running
+container based applications. The engine creates 
+a server side Daemon process that hosts images, 
+containers, networks and storage volumes. 
+
+The Docker Client is a layer between the user and the implementation which runs the
+application, and the Docker server runs the application and gets and decodes 
+the requests from the client. The Docker server and docker client can be run on 
+the same machine or a local Docker client can be connected to a remote server. 
+
+2. Docker Images (templates for containers)
+Images contain instructions that are used to create containers.
+Dockerfiles are how applications are containerized. 
+The dockerfile is a text based script of instructions that is used to create an image.
+A dockerfile contains the commands that are
+used to build images. From these images, containers are created.
+(Contain everything that the application code needs to run as a container.)
+
+3. Docker Container (a runnable instance of an image)
+Containers include all things required to run an application. 
+Containers are beneficial because they occupy less space and 
+let specific applications run in isolation. Unlike a virtual machine 
+a Docker container does not include or require a separate operating system. 
+It is a functional kernel that uses resource isolation for memory and CPU. 
+
+4. Docker Registries
+A local or public repository like Docker Hub. 
+Docker registry is a stateless, highly scalable server side application
+that allows users to store and distribute docker images. Registries can 
+be public (such as Docker Hub) or private. 
+
+---------
+
+Docker VS VM:
+Each VM that runs inside a host OS has its own guest OS,
+which are irrespective of the host OS. 
+
+With Docker, each container has access to a single physical 
+server that hosts the OS and eventually shares this OS with
+the other containers (containers share host kernel via Dcoker Daemon 
+while a VM has its own kernel). This ensures that 
+the containers are extremely lightweight and 
+efficient in terms of boot time as well.
+
+--------
+ 
+Dockerfile:
+FROM - Tell Docker what base image you would like to use.
+WORKDIR - Instructs Docker to use this path as the 
+default location within the image for all subsequent commands.
+COPY - copy requirements.txt into image and later copy 
+everything within the directory into the image.
+RUN - Execute command to install dependencies within
+requirements.txt. 
+CMD - Tell Dcoker what command we want to run when our 
+image is executed inside the container. 
+RUN apt-get update update apt-get, a Linux package manager, 
+to install basic python infrastructure, if needed, in a container
+
+--------
+
+$ docker build -t fareszf/python .
+builds a docker image from a dockerfile
+"-t":tag, for example, "fareszf/python" you can tag it as follows: "fareszf/python:v2"
+"username/imagebase": convention to identify who made the image
+"." : indicates that the dockerfile exists in the current directory. 
+
+-------
+
+$ docker login
+login to a registry, i.e., dockerhub. Dockerhub is a cloud based repository 
+in which Docker users and partners create, test. store and distribute 
+container images.
+
+$ docker push
+to share your images to the Dockerhub registry.
+
+$ docker run
+runs your image as a container.
+
+$ which coverage
+locates the executable file associated with a given command.
+
+$ pip list
+list all packages, modules installed in Python
+
+$ docker images
+list all images
+
+$ docker ps
+list running containers
+
+$ docker ps -a
+list all containers
+
+$ docker stop $(docker ps -a -q) #-q: container id
+$ docker rm $(docker ps -a -q)
+stop and delete all running containers.
+
+
+$ docker rmi image-id
+delete an image. You may need to stop all containers 
+$ docker rmi -f image-id
+force deleting an image
+Note: before deleting an image, you must stop all containers associated with it.
+
+-------
+
+$ docker run -it -v /c:/Users/Fares/Documents/demo://usr/cs330e -w //usr/cs330e fareszf/python
+-it: starts the container in the interactive mode.
+-d: detach mode (starts the container in the background.)
+-v: mounts the current working directory into the container.
+-w: specifies working directory inside the container.
+
+$ docker images
+REPOSITORY       TAG       IMAGE ID       CREATED        SIZE
+fareszf/python   latest    1dc36e7c3ef6   25 hours ago   1.14GB
+ 
+-------
+
+docker image: lists all the locally stored images 
+docker ps: lists the running containers
+docker ps -a: lists all running and exited containers.
+docker stop: stops a running container.
+docker restart: retarts a stopped container.
+docker kill: kills a container by stopping its execution immidiately.
+docker rm: deletes a stopped container.
+docker rmi: removes (and un-tags) one or more images from the host node.
+
+
+https://mukulrathi.co.uk/docker-postgres-flask/

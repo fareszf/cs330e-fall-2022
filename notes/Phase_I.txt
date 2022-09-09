@@ -1,0 +1,39 @@
+In project #1, you'll work with two projects (or repos):
+- public code repo: https://gitlab.com/fareszf/cs330e-collatz.git
+- public test repo: https://gitlab.com/fareszf/cs330e-collatz-tests.git
+
+In Phase #1 of the project, you need to understand the struture and relationships among the given files.
+Project structure: 
+(1) Kernel: Collatz.py
+- Collatz_solve(r, w)
+- Collatz_eval(i, j)
+- w.write(): writes a string to a writer, w.
+
+(2) Run Harness: RunCollatz.py
+- Sys.stdin: keyboard
+- Sys.stdout: console
+- RunCollatz.py < RunCollatz.in > RunCollatz.out
+RunCollatz.py will receive input from RunCollatz.in (rather than from the keyboard)
+and will forwards the output to RunCollatz.out (rather than to the console)
+
+(3) Test Harness: TestCollatz.py
+Tests the methods in Collatz.py
+Read, eval, print, and solve
+r = StringIO("...") read from
+w = StringIO() write to
+StringIO implements a file-like class that reads and writes a string buffer.
+w.getvalue(): reads a string from a file.
+
+(4) Unit tests vs acceptance tests
+acceptance tests are a form of black box testing
+unit tests are a form of white box testing
+
+Unit tests and acceptance tests only check valid inputs.
+
+(5) Requirements.txt
+Pip freeze > requirements.txt
+
+(6) .gitlab-ci.yml
+You need to have this file in the root of your repo, each time you push, it will automatically trigger 
+your CI pipeline.
+
