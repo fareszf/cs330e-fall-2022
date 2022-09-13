@@ -1,0 +1,19 @@
+- unittest
+Python's unittest in its simplest form consists of the function main and the class TestCase
+Define a class that extends TestCase. Each function inside this class must start with "test"
+
+Unittest workflow is:
+1. you import main and TestCase from unittest
+2. You define your own class derived from TestCase.
+3. Then you fill it with functions that start with ‘test’.
+3. You run the tests by placing main() in your file, usually at the bottom.
+
+assertEqual() is one of many kinds of assertions that unittest provides
+
+Python's self is analogous to Java's this
+
+Python's unittest has the nice property that even an internal assertion failure will not stop it 
+from running all of the tests
+
+the quality of the unit tests is essential to the usefulness of doing unit tests
+

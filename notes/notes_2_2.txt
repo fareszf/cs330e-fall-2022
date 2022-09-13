@@ -1,0 +1,20 @@
+the Python tool, coverage, measures how many lines of your code is a unit test actually testing
+
+- coverage:
+     Test coverage or code coverage is used to measure the percent of your code covered by a test. 
+     Coverage testing only checks whether or not a test is present. It does not check the quality of the test.
+
+     --branch: to activate branch coverage otherwise only statement coverage is measured
+     -m flag: shows the line number of missing statements
+
+Coverage output:
+     Stmts, or code statements, indicate the number of lines of code that could be tested.
+     Miss, or Missed lines, indicates the number of lines that are not executed by the unit tests. 
+     Branch: number of possible branches
+     BrPart: number of branches that were executed during tests
+     Cover, or Coverage, is the percentage of code covered by the current tests 
+        (equivalent to [(Stmts+Branch) - (Miss+(Branch-BrPart))]/[Stmts+Branch]).
+     Missing: missing lines (and branches)
+	 
+source: https://coverage.readthedocs.io/en/coverage-5.1/cmd.html
+        https://coverage.readthedocs.io/en/coverage-5.1/branch.html
