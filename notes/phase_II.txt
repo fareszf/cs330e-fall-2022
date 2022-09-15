@@ -1,0 +1,71 @@
+Phase II of Project #1:
+----------------------
+You need to do the following.
+(1) Fix the unit tests in TestCollatz.py
+    
+	- Valid maximum cycle length values can be obtained using Collatz Calculator at
+	https://www.udebug.com/UVa/100
+	will calculate max cycle length for up to 100,000.
+
+	scroll down until you see the window titled "input".
+	Inside the window, type in intervals such as
+	1 10
+	2 20
+	Then scroll down and hit the button "Get Accepted Output".
+	The output will be displayed in the window underneath the button to the left.
+    
+	- Another option is to use this file 
+	https://gitlab.com/fareszf/collatz_calculator/-/blob/master/collatz_cal.cpython36.pyc
+	On *UTCS machines*, the comamand is:
+
+	python3 collatz_cal.cpython36.pyc < input > output
+	
+	where input is a text file of the inputs and ouput is a location for output. 
+	This is compiled on a CS machine so it will work there. Not sure if it works on other machines. 
+
+(2) Run the unit tests 
+    This can be achieved in many ways by either: 
+
+    2.1 - "make tests"
+    You may receive an error message as follows:
+    "make: *** [TestCollatz.tmp] Error 1"
+
+    Where can you check to see what went wrong?
+
+    Note: Each time you need to run "make test", you need to run "make clean".
+
+    2.2 - "python TestCollatz.py"
+
+(3) Fix the method "collatz_eval" in "Collatz.py" by providing the correct implementation.
+
+(4) Fix the acceptance tests in "RunCollatz.out" and "RunCollatz.in"
+    You may use the Collatz Calculator mentions in (1).
+
+(5) After fixing unit tests, "collatz_eval", and acceptance tests, 
+    run "make test" (remember to run "make clean" before you run "make test.)
+
+(6) RunCollatz.out: you may need to mannually update this file after you finish 
+    each phase of the project. This file represents acceptance tests and 
+	must have correspondence with RunCollatz.in. Can be created using the online 
+	Collatz calculator mentioned in (1). 
+
+(7) TestCollatz.out: you need to manually update this file after you finish each phase of the project
+
+$ mv TestCollatz.tmp TestCollatz.out
+
+(8) Continuous integration:
+    Is the process of automatically building and testing your code.
+
+    - Building and integrating the code will be performed on GitLab.
+    - To inform GitLab to perform continuous intgeration, you need to include 
+    a file ".gitlab-ci.yml" in your project's folder.
+    - If the file ".gitlab-ci.yml" exists in your project's folder and contains the proper
+    instructions, then each time you push to remote, gitlab will automatically build and test your code. 
+
+    Files that starts with a "." are hidden files. If you use the "ls" command, 
+	you may not be able to see them. You may use "ls -al" instead.
+
+(9) ".gitignore"
+    It contains a list of files you want git to avoid pushing them to remote. 
+    For example, In Mac OS, ".DS_Store" hidden files exists in all your directories 
+    You want git to ignore them, so you add ".DS_Store" as a line in ".gitignore"
