@@ -1,0 +1,126 @@
+Factorial.py and FactorialT.py
+------------------------------
+Factorial.py:
+------------
+factorial_recursion
+•	Perform recursive calls first, then take the return value of 
+the recursive call and calculate the result.  The result won't 
+be calculated until you have returned from every recursive call.
+•	You need to keep stack frames until the recursion is over 
+-- O(n) space. 
+
+factorial_tail_recursion
+•	Note that a function inside a function is allowed in Python. 
+•	Perform your calculations first and then execute the 
+recursive call, passing the results of the current step to 
+the next recursive step. 
+•	We are reusing the current stack frame so we will never get stack overflow.
+•	Some compliers transfer tail recursive functions into loop (but not in Python).
+•	Procedure is recursive but the process is not.
+
+FactorialT.py:
+------------
+with self.subTest(): if one of the test fails, this would be 
+the end of test_0. with keeps the test going until it goes through all. 
+
+timeit:
+•	timeit function takes three arguments.
+•	f.__name__ obtains the name of the current function and "(100)" is the argument to the function.
+•	"from __main__ import " + f.__name__ imports the definition of the function
+•	number = 1000, determine how many times we are going to run the function.
+•	The result, t, is printed after multiply it with 1000 because timeit provides results in microseconds 
+and we need it in milliseconds.
+-----------------------
+
++ vs +=
+-------
+a += b is the same as a = a + b only if a and b are immutable.
+Otherwise, + returns a newly allocated object, but += modify the object in place.
+
+i.e.,
++ always returns a newly allocated object
++= should (but doesn't have to) modify the object in-place if it's mutable.
+
+e.g.,
+----------
+>>> x = 10
+>>> y = 10
+>>> id(x)
+1582465424
+>>> id(y)
+1582465424
+>>> x += 1
+>>> id(x)
+1582465456
+-----------
+
+>>> x = 10
+>>> y = 10
+>>> id(x)
+1582465424
+>>> id(y)
+1582465424
+>>> x = x + 1
+>>> id(x)
+1582465456
+----------
+>>> x = [2, 3]
+>>> id(x)
+2194172870024
+>>> x += [1]
+>>> x
+[2, 3, 1]
+>>> id(x)
+2194172870024
+----------
+>>> x = [2, 3]
+>>> id(x)
+2194172879624
+>>> x = x + [1]
+>>> x
+[2, 3, 1]
+>>> id(x)
+2194172879560
+---------
+list += list or tuple
+list + list
+
+iteration.py: 
+------------
+Iterables:
+- an iterable is an object that you can iterate through.
+- iterables usually have the property "__getitem__" 
+  that indicates an object is indexable.
+
+>>> x=[2, 3, 4]
+>>> hasattr(x, "__iter__")
+True
+>>> hasattr(x, "__getitem__")
+True
+>>> hasattr(x, "__next__")
+False
+
+Iterators vs generators:
+- an iterator object is an object that has the "__iter__" and "__next__" attribute.
+- you can get an iterator out of an iterable using iter function.
+- generator functions allow you to declare a function that behaves like an iterator, 
+  i.e. it can be used in a for loop.
+- every generator is an iterator.
+
+iter(): takes an iterable object and returns an iterator.
+>>> x=[2, 3, 4]
+>>> p = iter(x)
+>>> next(p)
+2
+>>> next(p)
+3
+>>> next(p)
+4
+>>> next(p)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration
+>>>
+------------
+https://nvie.com/posts/iterators-vs-generators/
+https://data-flair.training/blogs/python-generator-vs-iterator/

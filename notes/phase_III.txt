@@ -1,0 +1,23 @@
+Project #1: Phase III
+----------------------
+- Cache
+   Lazy cache caches values upon requests
+   eager cache caches before all requests
+   meta cache
+
+   limits of input are: 1, 999,999
+
+   start with a cache of 1,000,000 and play with smaller sizes
+
+   ranges that produce max cycle lengths
+
+   1-1000, 1000-2000, 2000-3000, 3000-4000, 4000-5000, etc.
+
+   cycle_length(1500, 4500)
+   look up: 2000-3000, 3000-4000
+   compute: 1500-2000, 4000-4500
+
+-  SPOJ
+   Time limit: 2-10 secs
+   source code limits: ~ 50K
+   Memory limit:	1536MB 
