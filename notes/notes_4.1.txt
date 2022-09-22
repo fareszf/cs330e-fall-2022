@@ -1,0 +1,144 @@
+
+sets and dicts:
+--------------
+set () will create an empty set
+{} will create an empty dictionary
+
+Sets restirct their members to be hashables and dicts restrict their keys to be hashables (i.e., immutables).
+
+----------
+Lambda and zip
+--------------
+Lambda is an anonymous function that can be created at runtime. 
+Anonymous means that it should not be bound to a name.
+
+>>> def f (x):
+...     return x**2
+>>> g = lambda x: x**2
+>>>
+>>> f(3) == g(3)
+True
+Note that the lambda definition does not include a "return" statement -- 
+it always contains an expression which is returned.
+
+Syntax:
+lambda arg1, arg2, ...argN : expression using arguments
+>>> f = lambda x, y, z: x + y + z
+>>> f(1, 2, 3)
+6
+>>>
+
+Zip:
+zip is a generator that combines two objects in a tuple.
+
+>>> a = [1, 2, 3, 4]
+>>> b = ['a', 'b', 'c', 'd']
+>>> c = zip(a, b)
+>>> c
+<zip object at 0x01939440>
+>>> list(c)
+[(1, 'a'), (2, 'b'), (3, 'c'), (4, 'd')]
+>>> list(c)
+[]
+
+--------------
+Cannot be done for iterators
+- list(iterator) and len(iterator) == 0 
+iterators might generate numbers indefintely, e.g., count() in itertools.
+
+- if iterator or if (iterator == []) 
+e.g.,
+>>> x = []
+>>> y = iter(x)
+>>> y
+<list_iterator object at 0x000001A70B1CAEF0>
+>>> if y :
+...    print("Full List")
+... else :
+...    print("Empty List")
+...
+Full List
+>>>
+
+Indexables:
+---------
+If an iterable is indexable, you can access it's elements via an index and that the elements are finite.
+If an iterable is not indexable, then it might be infinit and you cannot access it's elements via an index. 
+For example, if x is not idexable, to iterate throught it's elements, you may either do "for i in x:" or
+p = iter(x); val = next(p); ...
+-------------
+
+
+RMSE:
+Other implementations using zip, map, lambda.
+(1) rmse_range_for: indexing
+(2) rmse_zip_for: improvements: iterates through tuples
+              zip: it combines two objects in a tuple.
+              z is iterable over iterables of lenght 2.
+              zip is a generator.
+(3) rmse_zip_reduce: defines a function on the fly (Lambda: special keyword to define functions).
+* reduce takes three arguments:
+		 1) binary function (replaced by lambda)
+		 2) sequence(iterable) (z)
+		 3) seed (0)
+reduce(sub, [2, 3, 4], 1]
+1 sub 2 = -1
+-1 sub 3 = -4
+-4 sub 4 = -8
+
+reduce(lambda u, w : u + (w[0] - w[1]) ** 2, z, 0)
+func = lambda u, w : u + (w[0] - w[1]) ** 2
+initially:
+z=[(x0,y0),(x1,y1), ..., (xn,yn)] 
+0 func (x0,y0) --> result1
+result1 func (x1,y1) --> result2
+....
+(4) rmse_zip_map_sum: map: takes two parameters:
+			   (1) a unary function
+			   (2) a list (or iterable) to iterate through
+	              map iterates through the elements of the second parameter and apply the function.
+   		      map is a generator.
+		      map is a unary function, reduce is a binary function
+
+>>> a = [2, 3, 4]
+>>> m = map(lambda v: v**2, a)
+>>> print(m) # m is a generator
+<map object at 0x00623F90>
+>>> print(list(m))
+[4, 9, 16]
+>>>
+
+Note: motivation for using map. if you have a list of numbers and want to double the numbers. 
+you need to construct a loop and apply a function, double to every element in the list.
+ With map, we only need map(double, list)	
+(5) rmse_zip_list_sum  
+Difference between (5) and (4) is that sum is eager but map is lazy. 
+In the lazy case, small machine is built to produce values O(1) space, 
+in the eager case, all values are generated O(n) space.
+>>> b = [v ** 2 for v in a] # with [ ] we have a list (eager)
+>>> b
+[4, 9, 16]
+
+(6) rmse_zip_generator_sum
+>>> c = (v ** 2 for v in a) # with ( ) we have a generator (lazy)
+>>> c
+<generator object <genexpr> at 0x0061EAE0>
+>>> list(c)
+[4, 9, 16]
+
+(7) rmse_map_sum: map is different here. It is binary (not unary). 
+it applies its first argument(function) to the two parameters which are iterables. 
+(close to what zip do?) Lazily build a generator.
+>>> from numpy import add
+>>> map(add, [2, 3, 4], [5, 6, 7])
+<map object at 0x008ABB90>
+>>> m = map(add, [2, 3, 4], [5, 6, 7])
+>>> m
+<map object at 0x008B6070>
+>>> list(m)
+[7, 9, 11]
+
+(8) rmse_numpy
+sqrt(mean(square(subtract(a, p))))
+
+a,p are two iterables

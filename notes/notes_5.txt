@@ -1,0 +1,120 @@
+Mutables vs immutables:
+----------------------
+Mutables are objects that can be changed after creation. Examples, list, set, and dict
+Immutables are objects that cannot be changed after creating and attempt to modify them
+may result in creating a new object. Examples, tuples, frozensets, str, int, ...
+
++ vs +=
+-------
+When applied to immutables, will always result in a newly allocated object.
+When applied to mutables, "+=" will modify object in place but 
+"+" will result in a newly allocated object.
+
+list += list or dict (+= is tolerant)
+list = list + list   (+ is intolerant)
+
+e.g.,
+----------
+>>> x = 10
+>>> y = 10
+>>> id(x)
+1582465424
+>>> id(y)
+1582465424
+>>> x += 1
+>>> id(x)
+1582465456
+-----------
+
+>>> x = 10
+>>> y = 10
+>>> id(x)
+1582465424
+>>> id(y)
+1582465424
+>>> x = x + 1
+>>> id(x)
+1582465456
+----------
+>>> x = [2, 3]
+>>> id(x)
+2194172870024
+>>> x += [1]
+>>> x
+[2, 3, 1]
+>>> id(x)
+2194172870024
+----------
+>>> x = [2, 3]
+>>> id(x)
+2194172879624
+>>> x = x + [1]
+>>> x
+[2, 3, 1]
+>>> id(x)
+2194172879560
+---------
+list += list or tuple
+list + list
+tuple += tuple
+
+Iterables vs iterators:
+----------------------
+Iterables:
+---------
+An example of an iterable is a list
+>>> x = [1, 2, 3]
+List is an iterable, so it must have the attribute, or magic function, "__iter__"
+>>> hasattr(x, "__iter__")
+True
+
+This list is indexable but not exhaustible.
+>>> hasattr(x, "__getitem__")
+True
+>>> list(x)
+[1, 2, 3]
+>>> list(x)
+[1, 2, 3]
+
+Iterators:
+---------
+One way to obtain an iterator from an iterable is to apply the function "iter" on the iterable
+Example
+>>> x = [1, 2, 3]
+>>> y = iter(x)
+
+If y is an iteraot, it must have the atttibute "__next__"
+>>> hasattr(y, "__next__")
+True
+
+Is y also an iterable? Let's check if it has the attribute "__iter__"
+>>> hasattr(x, "__iter__"). Yes.
+True
+
+Is y indexable? No.
+>>> hasattr(y, "__getitem__")
+False
+
+Is y exahusible? Yes.
+>>> list(y)
+[1, 2, 3]
+>>> list(y)
+[]
+>>>
+
+Since y is iterable, you can iterate through it's elements by either placing the object x in a for statement or
+by using the next() function.
+>>> y = iter(x)
+>>> next(y)
+1
+>>> next(y)
+2
+>>> next(y)
+3
+>>> next(y)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration
+>>>
+
+Note that when you consume all values in y and try to run "next(y)", a StopIteration will be raised.

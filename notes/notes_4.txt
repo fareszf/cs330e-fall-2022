@@ -1,0 +1,123 @@
++ vs +=
+-------
+a += b is the same as a = a + b only if a and b are immutable.
+Otherwise, + returns a newly allocated object, but += modify the object in place.
+
+i.e.,
++ always returns a newly allocated object
++= should (but doesn't have to) modify the object in-place if it's mutable.
+
+e.g.,
+----------
+>>> x = 10
+>>> y = 10
+>>> id(x)
+1582465424
+>>> id(y)
+1582465424
+>>> x += 1
+>>> id(x)
+1582465456
+-----------
+
+>>> x = 10
+>>> y = 10
+>>> id(x)
+1582465424
+>>> id(y)
+1582465424
+>>> x = x + 1
+>>> id(x)
+1582465456
+----------
+>>> x = [2, 3]
+>>> id(x)
+2194172870024
+>>> x += [1]
+>>> x
+[2, 3, 1]
+>>> id(x)
+2194172870024
+----------
+>>> x = [2, 3]
+>>> id(x)
+2194172879624
+>>> x = x + [1]
+>>> x
+[2, 3, 1]
+>>> id(x)
+2194172879560
+---------
+list += list or tuple
+list + list
+
+iteration.py: 
+------------
+Iterables:
+- an iterable is an object that you can iterate through.
+- iterables usually have the property "__getitem__" 
+  that indicates an object is indexable.
+
+>>> x=[2, 3, 4]
+>>> hasattr(x, "__iter__")
+True
+>>> hasattr(x, "__getitem__")
+True
+>>> hasattr(x, "__next__")
+False
+
+Iterators vs generators:
+- an iterator object is an object that has the "__iter__" and "__next__" attribute.
+- you can get an iterator out of an iterable using iter function.
+- generator functions allow you to declare a function that behaves like an iterator, 
+  i.e. it can be used in a for loop.
+- every generator is an iterator.
+
+iter(): takes an iterable object and returns an iterator.
+>>> x=[2, 3, 4]
+>>> p = iter(x)
+>>> next(p)
+2
+>>> next(p)
+3
+>>> next(p)
+4
+>>> next(p)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration
+>>>
+------------
+https://nvie.com/posts/iterators-vs-generators/
+https://data-flair.training/blogs/python-generator-vs-iterator/
+
+--------------------
+Exception Handling
+Why do we need exception handling?
+Errors in a python module produce a trace back error and stops the execution of the module. 
+Such Errors are useful for the developers not the user. 
+Expect which sections of your code that may cause an error, put such sections inside try-except blocks. 
+If the code in the try section works, the except is skipped. Otherwise, we jump in the except section.
+
+Structure:
+-----
+try:
+	pass
+except: # This will catch all exceptions.
+	pass
+[except Exception as e:
+	print(e)] # saves exception to variable e
+else:
+	pass
+finally:
+	pass
+-----
+else is executed when the try section does not raise an exception.
+finally section is always executed (whether the code is successful or we threw an exception). can be used to release resources. 
+Sometimes we need to raise an exception manually. The command "raise" forces an error to occur.
+-----
+To be specific, "Exception" can be replaced by
+NameError
+TypeError
+...
+
