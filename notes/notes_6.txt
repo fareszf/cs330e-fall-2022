@@ -41,34 +41,7 @@ zip is a generator that combines two objects in a tuple.
 >>> list(c)
 []
 
---------------
-Cannot be done for iterators
-- list(iterator) and len(iterator) == 0 
-iterators might generate numbers indefintely, e.g., count() in itertools.
-
-- if iterator or if (iterator == []) 
-e.g.,
->>> x = []
->>> y = iter(x)
->>> y
-<list_iterator object at 0x000001A70B1CAEF0>
->>> if y :
-...    print("Full List")
-... else :
-...    print("Empty List")
-...
-Full List
->>>
-
-Indexables:
----------
-If an iterable is indexable, you can access it's elements via an index and that the elements are finite.
-If an iterable is not indexable, then it might be infinit and you cannot access it's elements via an index. 
-For example, if x is not idexable, to iterate throught it's elements, you may either do "for i in x:" or
-p = iter(x); val = next(p); ...
--------------
-
-
+-----
 RMSE:
 Other implementations using zip, map, lambda.
 (1) rmse_range_for: indexing
