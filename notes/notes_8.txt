@@ -1,0 +1,102 @@
+"|=" union of sets
+
+Lines 174: all() # all(iterable): Return True if all elements of the iterable are true (or if the iterable is empty).
+A(): instance of a class
+True
+...
+all([]) = True
+
+Lines 186: any() # any(iterable): Return True if any element of the iterable is true. If the iterable is empty, return False.
+any([]) = False
+
+According to the Python Documentation: By default, an object is considered true unless its class defines, 
+for example, a __bool__() method that returns False. 
+
+https://docs.python.org/3.5/library/functions.html#all
+
+----------
+FunctionKeywords.py
+Note 1: the specified "by name" arguments should have correspondance with the names 
+in the function signature as parameters.
+Note 2: In the functional call, when you mix "by position" and "by name" arguments, 
+arguments passed "by position" should come first. 
+Then the remainder by name (the order of the arguments passed by name does not matter)
+
+
+FunctionKeywords.py
+------------------
+Note 1: the specified "by name" arguments should have corresponds with the names 
+in the function signature as parameters.
+Note 2: In the functional call, when you mix "by position" and "by name" arguments, 
+arguments passed "by position" should come first. 
+Then the remainder by name (the order of the arguments passed by name does not matter)
+
+FunctionDefaults.py
+In function definition, non-default arguments cannot follow default arguments.
+
+Lines 35-39, test different function calls to h1. 
+•	Line 35: call with nothing. no pass, x=[], add to it [2], result is [2].
+•	Line 36, the default only happens once when the function is called first.
+•	Line 37, passes in a list -- will add 2 to the list components.
+•	Line 38, call with nothing, get another 2 added to the previously build list.
+•	Line 39, passes in a list -- will add 2 to the list components.
+Lines 43-45: Define the function h2 which set default to empty parameter (empty tuple). 
+-- change default to immutable.
+Lines 47-51, test different function calls to h2.
+•	Line 47: call with nothing. no pass, x=(), create a new tuple, result is (2,).
+•	Line 48, another call with nothing. no pass, x=(), create a new tuple, result is (2,).
+•	.....
+•	Recommendation: do not use mutables as defaults.
+Mutable Function Default
+if it is a must, default it to None and init an empty one later (if arg is None)
+
+Lines 55-59: Define the function h3 which set default to None parameter (None = null in Java).
+Lines 61-66, test different function calls to h3.
+
+....
+Note that in this example, we call the function h3() twice we get the same result, [2], 
+not like h1(): we first received [2] and then received [2, 2]. Because the list in h1 was 
+a default and it was constructed only once. But in h3 the list was not the default. 
+It was inside the function as a local variable.
+
+
+FunctionUnpacking.py
+ordering of unpacking (When calling a function and passing a parameter – 
+by position, by variable name, or by unpacking):
+- position must precede variable name. 
+- variable name and unpacking (order does not matter): unpacking first, 
+assign values of unpacking to parameters in order. Then, assign variables. 
+Note that there might be name conflict for example
+>>> def f (x, y, z) :
+...     return [x, y, z]
+...
+>>> t = (3, 4)
+>>>
+>>> assert f(z = 2, *t) == [3, 4, 2]
+>>> assert f(*t, z = 2) == [3, 4, 2]
+>>> assert f(*t, x = 2) == [3, 4, 2]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: f() got multiple values for argument 'x'
+
+>>> assert f(2, *t) == [2, 3, 4]
+>>> assert f(*t, 2) == [3, 4, 2]
+>>>
+
+FunctionTuple.py
+----------------
+Note that iterable packing opens the door for optional parameters.
+- *t as an argument (in a function call) means unpacking
+- *t as a parameter (in a function definition) in the function signature means packing
+
+FunctionDict.py
+- **t as an argument (in a function call) means unpacking
+- **t as a parameter (in a function definition) in the function signature means packing
+
+Rules above applies in addition to the following: * (unpacking iterable) must precede ** (unpacking dictionary).
+Syntax: 
+position should come before variable name
+position should come before unpacking dict
+unpacking iterable should come before unpacking dict
+
+Semantic: {By position, unpacking iterable}, by variable name, unpacking dictionary.
