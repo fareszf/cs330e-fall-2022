@@ -1,3 +1,10 @@
+Comprehensions.py
+-----------------
+filter(predicate, list_of_inputs)
+filter is a generator takes a predicate, it applies the predicate 
+on the given iterable returns the element that satisfies the predicate.
+It's an iterator, i.e., it returns itself.
+
 "|=" union of sets
 
 Lines 174: all() # all(iterable): Return True if all elements of the iterable are true (or if the iterable is empty).
