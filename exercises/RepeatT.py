@@ -17,7 +17,7 @@ class MyUnitTests (TestCase) :
            else:
                break
                 
-       self.assertEqual(x, [10, 10, 10, 10, 10, 10, 10, 10, 10, 10])
+       self.assertEqual(list(x), [10, 10, 10, 10, 10, 10, 10, 10, 10, 10])
        
     def test_2 (self) :
        x = []
@@ -27,7 +27,7 @@ class MyUnitTests (TestCase) :
            else:
                break
                 
-       self.assertEqual(x, [])
+       self.assertEqual(list(x), [])
 
     def test_3 (self) :
        x = []
@@ -45,7 +45,7 @@ class MyUnitTests (TestCase) :
               x += [i]
            else:
                break
-       self.assertEqual(x, [10, 10, 10, 10, 10, 10, 10, 10, 10, 10])  
+       self.assertEqual(list(x), [10, 10, 10, 10, 10, 10, 10, 10, 10, 10])  
        
 if __name__ == "__main__" :
     main()
