@@ -35,7 +35,7 @@ class MyUnitTests (TestCase) :
                   x += [i]
                else:
                   break    
-            self.assertEqual(list(x), [1, 2, 3, 4, 1, 2, 3, 4, 1, 2])    
+            self.assertEqual(x, [1, 2, 3, 4, 1, 2, 3, 4, 1, 2])    
       
    def test_3 (self) :
        for f in self.a :
@@ -47,7 +47,7 @@ class MyUnitTests (TestCase) :
                   x += [i]
                else:
                   break
-            self.assertEqual(list(x), ['A', 'B', 'C', 'D', 'A', 'B', 'C', 'D', 'A', 'B',])  
+            self.assertEqual(x, ['A', 'B', 'C', 'D', 'A', 'B', 'C', 'D', 'A', 'B',])  
 
 if __name__ == "__main__" :
     main()
