@@ -1,8 +1,9 @@
 cache_1 and cahe_2
 DecoratorsT.py shows the test cases to build a cache to store the cycle lengths.
-The cache, cache_1, receives a function, f, and returns a function, g. cache_1 utilizes a cache, d.  
-Every time cache_1(f) is called, d and g are allocated and occupy their own memory locations, 
-so when g is returned you now have a function that acts as wrapper for f that utilizes a unique cache.
+The cache, cache_1, receives a function, f, and returns a function, g. 
+cache_1 utilizes a cache, d. Every time cache_1(f) is called, d and g 
+are allocated and occupy their own memory locations, so when g is returned 
+you now have a function that acts as wrapper for f that utilizes a unique cache.
 
 
 
