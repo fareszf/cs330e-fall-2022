@@ -1,0 +1,63 @@
+>>> def make_inc_b (j) :
+...     return lambda i : i + j
+...
+>>>
+>>> x = make_inc_b(1)(2)
+>>> x
+3
+>>> def make_inc_b (j, k) :
+...     return lambda i : i + j + k
+...
+>>> x = make_inc_b(1,2)(2)
+>>> x
+5
+>>> def make_inc_b (j) :
+...     return lambda i, k : i + k + j
+...
+>>> x = make_inc_b(1)(2,3)
+>>> x
+6
+>>>
+
+
+Decorators:
+----------
+A decorator is a function that takes another function as an argument and adds some kind of functionality, 
+and returns another function, all of this without altering the source code of the original function 
+that you passed in.
+
+Example:
+def decorator_function(original_function):
+	def wrapper_function():
+		print('wrapper executed this before display')     
+		return original_function() 
+	return wrapper_function
+
+@decorator_function # equivalent to "display = decorator_function(display)"
+def display():
+	print('display function ran')
+
+display()
+
+# output: 
+wrapper executed this before display
+display function ran
+
+Note: when stacking two decorators (from top to bottom), the lower decorator is executed first.
+
+Why?
+Decorating our functions allows us to easily add functionality to our existing functions 
+by adding that functionality inside the wrapper.
+
+def post_gtz (f) :
+    def g (n) :
+        v = f(n)
+        assert v > 0
+        return v
+    return g
+
+The function post_gtz performs the work of "f" and get the result to check if its > 0. 
+It transforms a function "f" to a function that checks if output greater than zero. 
+That function to be returned is "g". You can think of "g" as a wrapper of "f", 
+it calls "f" in its body then check if the result if greater than 0.
+

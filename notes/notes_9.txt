@@ -1,0 +1,48 @@
+Range and RangeIterator: 
+------------------------
+RangIterator.py:
+---------------
+In RangeIteratorT we see that range_iterator_class and 
+range_iterator_function are imported meaning we 
+can implement the rangeIterator functionality in 
+both a class and a function.
+ 
+Range.py:
+--------
+In RangeT we see that range_1, and range_2 are imported. 
+More importantly on lines 50-51 list() is called twice 
+and we get a new iterator both times! This logic can't be 
+done in a function, meaning we need to make a class that responds to __iter__().
+
+RangT.py:
+--------
+In RangeT we see that range_1, and range_2 are imported. 
+More importantly on lines 50-51 list() is called twice 
+and we get a new iterator both times! This logic can't be 
+done in a function, meaning we need to make a class that responds to __iter__().
+ 
+Range_2:
+-------
+Range_2 in Range.py is trying to implement a range function that is not exhaustible. 
+This is can be easily achieved by not updating the instance variables b and e.
+Instead you create two local variables and update them. Doing this, will keep the 
+original b and e as they were when the object was initially created, and therefore,
+each time you list the object, you get the same sequence of numbers (i.e., not exhaustibale).
+
+Note that a range object is an iterable but not iterator
+>>> x = range(4)
+>>> hasattr(x, "__iter__")
+True
+>>> hasattr(x, "__next__")
+False
+>>> 
+
+Range_1:
+-------
+Rabge_1 in Range.py accomplishes the same outcome of Range_2 but using inner classes.
+Inner class is a class that is defined inside another class. 
+Whenever you create an object of Range_1, you need to pass two variables, namely b and e.
+Afterward, whenever you try to navigate this object, You'll get an 
+instance of the inner class with the original variable values. 
+------
+https://opensource.com/article/18/3/loop-better-deeper-look-iteration-python
