@@ -1,0 +1,80 @@
+algebra
+	elements or members
+	operations
+
+integers
++, *, -, /
+
+algebras can be open or closed
+
+integers under addition, is that closed
+yes,
+subtraction, closed
+multiplication, closed
+division, not closed
+
+relational algebra
+	elements or members: relations or tables
+	operations: select, project, many flavors of join
+
+everything is closed
+
+relation or table
+
+Movie relations:
+Title	   Year	 Genre	    director
+Starwars   2002	 Action	    George Lucas
+Shane 	   1949	 Western    George Stevens
+
+What should we do so that we can have a director once and only once (i.e., eliminate redundancy)?
+We need to build a director relationship. Each director will have an id. This id will replace their names in the movie table.
+
+director relation
+ID name
+1 "george lucas"
+2 "george stevens"
+
+movie relation
+title           year    genre    director ID
+"shane"         1949    western  2
+"star wars"     1977    western  1
+
+We need a data structure to represent the table elements. In python, we can use tuple.  
+movies = [(_,_,_,_),(_,_,_,_)] but we do not have meta data. How to solve it? 
+
+movies = [{"name" : "shane", "year" : 1949, "genre" : "western", "director" : "george stevens"},
+          {"name" : "star wars", "year" : "1977", "genre" : "western", "director" : "george lucas"}]
+•	Select
+select(relation, unary_predicate) => relation
+unary_predicate is applied to each tuple, the ones that are true will be considered. 
+
+ 
+This functionality can be implemented using 
+(1) a lambda of one argument.
+
+the movies make after 1955
+select(movies, lambda d : d["year"] > 1955)
+# goes through list of dictionaries, invoke lambda on every dict on the list, 
+returns the one that is evaluates d["year"] > 1955 to true.
+
+(2) build a function
+def foo(d): # receives a dict
+    return d["year"]>1949
+
+select(movies, foo)
+What selects needs as a second argument a function or lambda (i.e., callable).
+
+Exercises: 
+(1) build select (yield, list comprehension, filter)
+def select(r, up) # yield
+    for d in r:
+         if up(d):
+             yield d
+
+def select(r, up): # list comprehension
+    return (d for d in r if up(d))
+
+def select(r, up): # filter
+    return filter(up, r)
+
+
