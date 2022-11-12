@@ -1,0 +1,31 @@
+•	build NaturalJoin
+NaturalJoin marries rows from two relations when columns of common attributes have same values.
+r = [{"A" : 1, "B" : 4, "C" : 7},
+       {"A" : 2, "B" : 5, "C" : 8},
+       {"A" : 3, "B" : 6, "C" : 9}] # attributes A, B and C
+
+s = [{"A" : 2, "B" : 4, "D" : 7}, # attributes A, B and D
+       {"A" : 3, "B" : 5, "D" : 5},
+       {"A" :  3, "B" : 6, "D" : 6},
+       {"A" :  4, "B" : 7, "D" : 6}]
+NaturalJoin(r, s) = [{'A' :  3, 'B' : 6, 'C' : 9, 'D' : 6}]
+ # r and share the attributes "A" and "B", therefore we will marry the two rows that has the same values
+# for these two attributes. row #3 of r and row # 3 of s.
+naturaljoin(r,s): marry rows from two relations when col of commnon attributes have the same value.
+Note:
+-----
+(1) in case of no common attributes between r and s, naturaljoin will do cross join
+(2) in case of common attributes but no common values, naturaljoin will do nothing.
+(3) in case of common attributes with common values, naturaljoin will return the common values. 
+------------------------------
+Note:
+def bp (u, v) :
+    return not any(u[k] != v[k] *for* k in u *if* k in v) # can be replaced with "retrun all(u[k] == v[k] ...)"
+
+This predicate return true when two rows, u and v, have equal values for the same attributes, 
+False, otherwise.
+Note that in case of the two rows have completely different attributes, bp will return true.
+
+This predicate will return true in two cases. First when there are no common attributes between the two input dictionaries or when all the common attributes have the same value.
+It will return false if there is at least one common attribute with different value.
+

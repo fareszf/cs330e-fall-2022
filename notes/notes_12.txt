@@ -1,0 +1,51 @@
+•	build project 
+Another operation is project.
+movies = [{"name" : "shane", "year" : 1949, "genre" : "western", "director" : "george stevens"},
+                 {"name" : "star wars", "year" : "1977", "genre" : "western", "director" : "george lucas"}]
+
+project(movies, "year", "name", "genre")  # this means that we need 3 out of 4 subset of column.
+
+def project (r, *t)
+•	 build CrossJoin
+CrossJoin (r, s): 
+CrossJoin combines 
+the first row of r with all rows of s, 
+the second row of r with all rows of s, 
+....
+Cross-Join(r,s)
+Note: dict constructor receives two dictionaries and returns one dictionary that results from combining first with the unpacking of the second.
+e.g., 
+d1 = {}
+d2 = {}
+d3 = dict(d1, **d2)
+Note:
+(1) d = {1: 'one', 2: 'two'} is possible, but, obviously, dict(1='one' ...) is not.
+(2) when applying dict on d1 and d2 where both have two identical key values, the value of d2 is taken.
+(3) When using dict constructor with dictionaries that has integer keys, we receive an error.
+# error
+>>> d1 = {1 : "one", 2 : "two"}
+>>> d2 = {3 : "Three", 4 : "Four"}
+>>> d3 = dict(d1, **d2)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: keyword arguments must be strings
+
+# no error - replace integers with strings.
+>>> d1 = {"1" : "one", "2" : "two"}
+>>> d2 = {"3" : "Three", "4" : "Four"}
+>>> dict(d1, **d2)
+{'3': 'Three', '4': 'Four', '1': 'one', '2': 'two'}
+>>>
+
+
+•	build ThetaJoin
+ThetaJoin joins corresponding rows given certain conditions.
+E.g., Given two relations:
+r with 3 rows
+s with 4 rows
+lambda u, v : u["A"] == v["C"]
+u: a row from the first relations r
+v: a row from the second relation v
+u["A"]: the value of the attribute "A" in u
+v["C"]: the value of the attribute "C" in v
+
