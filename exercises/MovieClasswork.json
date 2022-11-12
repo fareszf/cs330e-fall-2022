@@ -1,0 +1,18 @@
+{
+  "Title": "The Graduate",
+  "Year": "1967",
+  "Released": "1967",
+  "is_awesome": true,
+  "Actors": [
+    "Anne Bancroft",
+    "Dustin Hoffman",
+    "Katharine Ross",
+    "William Daniels"
+  ],
+  "Budget": null,
+  "Credits": {
+    "Director": "Mike Nichols",
+    "Music": "Paul Simon",
+    "Cinematography": "Robert Surtees"
+  }
+}

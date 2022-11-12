@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE BusinessCard [
+	<!ELEMENT BusinessCard (name, phone*, email)>
+	<!ELEMENT name (#PCDATA)>
+	<!ELEMENT phone (#PCDATA)>
+	<!ELEMENT email (#PCDATA)>
+	<!ATTLIST phone	type (home|work|mobile) #REQUIRED>
+]>
+
+<BusinessCard>
+	<name> John Smith </name>
+	<phone type="home">+1 (415) 555-1234 </phone>
+	<phone type="work">+1 (800) 555-9867 </phone>
+	<phone type="mobile">+1 (510) 555-1212 </phone>
+	<email> john@smith.com </email>
+</BusinessCard>
