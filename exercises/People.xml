@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<People>
+	<person>
+		<name> John Smith </name>
+		<phones>
+			<phone type="home">+1 (123) 456-7890</phone>
+			<phone type="mobile">+1 (123) 456-7890</phone>
+		</phones>
+		<remarks> CEO </remarks>
+	</person>
+	<person>
+		<name> John Doe </name>
+		<phones>
+			<phone type="home">+1 (345) 456-7890</phone>
+			<phone type="mobile">+1 (345) 456-7890</phone>
+		</phones>
+	</person>
+</People>
