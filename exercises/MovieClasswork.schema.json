@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "properties": {
+    "Title": {
+      "type": "string"
+    },
+    "Year": {
+      "type": "string"
+    },
+    "is_awesome": {
+      "type": "boolean"
+    },
+    "Actors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "Budget": {
+      "type": "null"
+    },
+    "Credits": {
+      "type": "object",
+      "properties": {
+        "Director": {
+          "type": "string"
+        },
+        "Music": {
+          "type": "string"
+        },
+        "Cinematography": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

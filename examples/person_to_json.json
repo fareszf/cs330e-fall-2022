@@ -1,0 +1,13 @@
+{
+    "name": "John Smith",
+    "age": 35,
+    "address": {
+        "street": "5 main St.",
+        "city": "Austin"
+    },
+    "children": [
+        "Mary",
+        "Abel"
+    ],
+    "has_car": null
+}
