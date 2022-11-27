@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+
+<!--
+Bookstore with no DTD (Document Type Definition)
+
+well-formed Extensible Markup Language (XML) adheres to:
+    Single root element
+    Matched tags, optional attributes, proper nesting
+    Unique attributes within elements
+
+valid XML additionally adheres to either:
+    Document Type Descriptor (DTD)
+    XML Schema (XSD)
+
+
+
+
+% xmllint -version
+xmllint: using libxml version 20708
+   compiled with: Threads Tree Output Push Reader Patterns Writer SAXv1 FTP HTTP DTDValid HTML Legacy C14N Catalog XPath XPointer XInclude ISO8859X Unicode Regexps Automata Expr Schemas Schematron Modules Debug Zlib
+%
+
+
+
+% xmllint 2-noout Bookstore1.xml
+%
+-->
+
+<Bookstore>
+   <Book ISBN="ISBN-0-13-713526-2" Price="85" Edition="3rd">
+      <Title>A First Course in Database Systems</Title>
+      <Authors>
+         <Author>
+            <First_Name>Jeffrey</First_Name>
+            <Last_Name>Ullman</Last_Name>
+         </Author>
+         <Author>
+            <First_Name>Jennifer</First_Name>
+            <Last_Name>Widom</Last_Name>
+         </Author>
+      </Authors>
+   </Book>
+   <Book ISBN="ISBN-0-13-815504-6" Price="100">
+      <Title>Database Systems: The Complete Book</Title>
+      <Authors>
+         <Author>
+            <First_Name>Hector</First_Name>
+            <Last_Name>Garcia-Molina</Last_Name>
+         </Author>
+         <Author>
+            <First_Name>Jeffrey</First_Name>
+            <Last_Name>Ullman</Last_Name>
+         </Author>
+         <Author>
+            <First_Name>Jennifer</First_Name>
+            <Last_Name>Widom</Last_Name>
+         </Author>
+      </Authors>
+      <Remark>
+      Buy this book bundled with "A First Course" - a great deal!
+      </Remark>
+   </Book>
+</Bookstore>
